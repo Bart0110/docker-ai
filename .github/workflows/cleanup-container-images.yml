@@ -1,0 +1,31 @@
+name: Cleanup container images
+
+on:
+  workflow_run:
+    workflows: ["Create and publish container images"]
+    types:
+      - completed
+    branches:
+      - main
+
+  workflow_dispatch:
+
+permissions:
+  packages: write
+
+jobs:
+  cleanup-untagged:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
+    permissions:
+      packages: write
+
+    steps:
+      - name: Cleanup old images
+        uses: dataaxiom/ghcr-cleanup-action@v1
+        with:
+          dry-run: false
+          delete-ghost-images: true
+          delete-partial-images: true
+          delete-orphaned-images: true
+          keep-n-untagged: 9
