@@ -24,8 +24,12 @@ jobs:
     strategy:
       matrix:
         image:
+          - tag: claude-debian
+            dockerfile: claude/claude-debian.Dockerfile
           - tag: omp-debian
             dockerfile: pi/oh-my-pi-debian.Dockerfile
+          - tag: pi-pim-debian
+            dockerfile: pi/pi-pim-debian.Dockerfile
 
     steps:
       - name: Checkout repository
