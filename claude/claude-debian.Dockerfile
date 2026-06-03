@@ -25,7 +25,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
     && uv venv --directory /root \
     && echo 'alias pip="uv pip"' >> /etc/bash.bashrc \
     \
-    && npm install --global @anthropic-ai/claude-code@2.1.152 \
+    && npm install --global @anthropic-ai/claude-code \
     \
     && npm cache clean --force >/dev/null 2>&1 || true \
     && echo "ALL ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/nopasswd \
