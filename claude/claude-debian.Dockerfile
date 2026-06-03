@@ -54,4 +54,4 @@ ENV PATH="/root/.local/bin:${PATH}"
 ENV ENTRYPOINT_EXEC="claude"
 
 WORKDIR /workspace
-ENTRYPOINT ["/bin/bash", "-c", ". /root/.venv/bin/activate && exec /entrypoint.sh"]
+ENTRYPOINT ["/bin/bash", "-c", ". /root/.venv/bin/activate && exec /entrypoint.sh \"$@\""]

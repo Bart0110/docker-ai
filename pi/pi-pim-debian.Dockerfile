@@ -60,4 +60,4 @@ ENV PATH="/root/.bun/bin:/root/.local/bin:${PATH}"
 ENV ENTRYPOINT_EXEC="pim"
 
 WORKDIR /workspace
-ENTRYPOINT ["/bin/bash", "-c", ". /root/.venv/bin/activate && exec /entrypoint.sh"]
+ENTRYPOINT ["/bin/bash", "-c", ". /root/.venv/bin/activate && exec /entrypoint.sh \"$@\""]

@@ -26,12 +26,13 @@ claude-sandbox() {
   mkdir -p "$HOME/.claude/projects/$SESS"
 
   docker run --rm -it \
+    -e "IS_SANDBOX=1" \
     -e "DOCKER_HOST_INTERNAL=$DOCKER_HOST_INTERNAL" \
     -v "$HOME/.claude/settings.json:/root/.claude/settings.json" \
     -v "$HOME/.claude/projects/$SESS:/root/.claude/projects/-workspace" \
     -v "$PWD:/workspace" \
     ghcr.io/bart0110/docker-ai:claude-debian-main \
-    "$@"
+    dummy "$@"
 }
 ```
 
@@ -64,7 +65,7 @@ omp-sandbox() {
     -v "$HOME/.omp/agent/sessions/$SESS:/root/.omp/agent/sessions/--workspace--" \
     -v "$PWD:/workspace" \
     ghcr.io/bart0110/docker-ai:omp-debian-main \
-    "$@"
+    dummy "$@"
 }
 ```
 
@@ -99,6 +100,6 @@ pim-sandbox() {
     -v "$HOME/.pi/agent/sessions/$SESS:/root/.pi/agent/sessions/--workspace--" \
     -v "$PWD:/workspace" \
     ghcr.io/bart0110/docker-ai:pi-pim-debian-main \
-    "$@"
+    dummy "$@"
 }
 ```
