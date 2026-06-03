@@ -4,7 +4,8 @@ FROM debian:trixie-slim
 
 LABEL org.opencontainers.image.description="Debian Trixie Slim with Oh My Pi Coding Agent"
 
-RUN apt-get update \
+RUN export DEBIAN_FRONTEND=noninteractive \
+    && apt-get update \
     && apt-get install -y --no-install-recommends \
         # Download libraries for cURL setup scripts \
         ca-certificates \
